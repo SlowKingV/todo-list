@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+<script defer src="main.js"></script></head>
+
+<body>
+  <div class="list-box">
+    <div class="heading-box item"><span>Today's To Do</span></div>
+    <hr>
+    <form class="add-box item">
+      <input id="text-input" type="text" placeholder="Add to your list..." required>
+      <button id="add-btn" class="icon-btn" type="submit"><i class="icon fa-solid fa-circle-plus fa-fw"></i></button>
+    </form>
+    <hr>
+    <ul id="list">
+      <li class="item">
+        <input class="task-check" type="checkbox">
+        <input class="description" type="text" value="Task placeholder, the script might not be working as intended">
+        <button class="icon-btn" type="button"><i class="icon fa-solid fa-ellipsis-vertical fa-fw"></i></button>
+      </li>
+      <li><hr></li>
+    </ul>
+    <div class="clear-box item"><button id="clear-btn" type="button">Clear all completed</button></div>
+  </div>
+</body>
+
+</html>
