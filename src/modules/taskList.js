@@ -1,4 +1,4 @@
-import Task from './task';
+import Task from './task.js';
 
 export default class {
   constructor(list = []) {
@@ -15,15 +15,15 @@ export default class {
   }
 
   refreshItemsIndex() {
-    this.list.forEach( (item, index) => item.index = index );
+    this.list.forEach((item, index) => { item.index = index; });
   }
 
   insertItems(element) {
     const items = [];
     const rule = document.createElement('li');
     rule.appendChild(document.createElement('hr'));
-    
-    this.list.forEach( (task) => items.push(task.element, rule.cloneNode(true)) );
+
+    this.list.forEach((task) => items.push(task.element, rule.cloneNode(true)));
 
     element.replaceChildren(...items);
   }

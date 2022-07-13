@@ -1,11 +1,11 @@
 // Node Modules
-import '@fortawesome/fontawesome-free/js/all';
+import '@fortawesome/fontawesome-free/js/all.js';
 
 // Assets
 import './style.css';
 
 // Modules
-import TaskList from './modules/taskList';
+import TaskList from './modules/taskList.js';
 
 // On page load populate task list
 window.onload = () => {

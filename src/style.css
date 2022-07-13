@@ -46,7 +46,7 @@ input[type="text"]:focus-visible {
 
 .list-box {
   background-color: #fff;
-  box-shadow: 0px 2px 8px #00000026;
+  box-shadow: 0 2px 8px #00000026;
   max-width: 30em;
   width: 100%;
 }
@@ -86,16 +86,16 @@ input[type="text"]:focus-visible {
   border: 2px solid #cecece;
 }
 
-.item .task-check:checked + .description {
-  color: #afafaf;
-  text-decoration: line-through;
-}
-
 .item .description {
   border: none;
   flex: 1;
   font-size: 1em;
   margin-left: 1em;
+}
+
+.item .task-check:checked + .description {
+  color: #afafaf;
+  text-decoration: line-through;
 }
 
 .item .icon-btn {
