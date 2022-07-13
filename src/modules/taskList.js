@@ -32,6 +32,9 @@ export default class {
   }
 
   #updateTasksIndex() {
-    this.list.forEach((item, index) => { item.index = index; });
+    this.list.forEach((task, index) => {
+      task.index = index;
+      task.updateIndex();
+    });
   }
 }

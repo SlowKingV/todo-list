@@ -6,10 +6,15 @@ export default class {
     this.element = this.#createElement();
   }
 
+  updateIndex() {
+    this.element.setAttribute('data-index', this.index.toString());
+  }
+
   #createElement() {
     // Create list element
     const element = document.createElement('li');
     element.setAttribute('class', 'item');
+    element.setAttribute('data-index', this.index.toString());
     // Create children
     element.appendChild(document.createElement('input'));
     element.appendChild(document.createElement('input'));
