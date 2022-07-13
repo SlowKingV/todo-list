@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --mode=development",
-    "build": "webpack"
+    "build": "webpack --mode=production"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,6 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "@fortawesome/fontawesome-free": "^6.1.1"
   }
 }

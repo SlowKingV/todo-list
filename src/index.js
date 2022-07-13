@@ -1,13 +1,19 @@
-import _ from 'lodash';
+// Node Modules
+import '@fortawesome/fontawesome-free/js/all';
+
+// Assets
 import './style.css';
 
-const component = () => {
-  const element = document.createElement('div');
+// Modules
+import TaskList from './modules/taskList';
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  return element;
-}
-
-document.body.appendChild(component());
+// On page load populate task list
+window.onload = () => {
+  const listContainer = document.getElementById('list');// <ul> element to put the <li>s
+  const tasklist = new TaskList();
+  tasklist.add('Task 0');
+  tasklist.add('Task 1');
+  tasklist.add('Task 2');
+  tasklist.add('Task 3');
+  tasklist.insertItems(listContainer);
+};
