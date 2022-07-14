@@ -6,12 +6,12 @@ export default class {
     this.element = this.#createElement();
 
     // Element constants
-    this.taskElements = {
+    Object.assign(this.element, {
       CHECKBOX: this.element.children[0],
       TEXT_INPUT: this.element.children[1],
       DELETE_BUTTON: this.element.children[2],
       MOVE_BUTTON: this.element.children[3],
-    }
+    });
   }
 
   updateIndex() {
@@ -20,7 +20,7 @@ export default class {
 
   updateValue(value) {
     this.value = value;
-    this.taskElements.TEXT_INPUT.value = value;
+    this.element.TEXT_INPUT.value = value;
   }
 
   #createElement() {
