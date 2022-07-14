@@ -15,6 +15,10 @@ export default class {
     this.#updateTasksIndex();
   }
 
+  edit(index, value) {
+    this.list[index].updateValue(value);
+  }
+
   moveTaskToPosition(taskIndex, newIndex) {
     const task = this.list.splice(taskIndex, 1)[0];
     this.list.splice(newIndex, 0, task);

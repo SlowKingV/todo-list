@@ -22,7 +22,12 @@ hr {
   margin: 0;
 }
 
-input[type="text"]:focus-visible {
+input[type="text"] {
+  transition: box-shadow 0.2s ease-out;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 -5px 0 #7c83ec inset;
   outline: none;
 }
 
@@ -98,11 +103,28 @@ input[type="text"]:focus-visible {
   text-decoration: line-through;
 }
 
-.item .icon-btn {
+.item .description:focus + .delete {
+  display: block;
+}
+
+.item .description:focus ~ .move {
+  display: none;
+}
+
+.item .delete {
+  display: none;
+  cursor: pointer;
+}
+
+.item .delete:hover .icon {
+  color: #eb6060;
+}
+
+.item .move {
   cursor: grab;
 }
 
-.item .icon-btn:active {
+.item .move:active {
   cursor: grabbing;
 }
 
