@@ -6,13 +6,45 @@ export default class {
     this.list = list;
   }
 
+  regenerateValues(datalist) {
+    const takslist = [];
+    datalist.forEach((entry) => {
+      takslist.push(new Task(
+        entry.value,
+        entry.index,
+        entry.completed,
+      ));
+    });
+
+    this.list = takslist;
+  }
+
+  exportListValues() {
+    const datalist = [];
+    this.list.forEach((task) => {
+      datalist.push({
+        value: task.value,
+        index: task.index,
+        completed: task.completed,
+      });
+    });
+
+    return datalist;
+  }
+
   add(value) {
-    this.list.push(new Task(value, this.list.length));
+    const task = new Task(value, this.list.length + 1);
+    this.list.push(task);
+    return task;
   }
 
   remove(index) {
-    this.list.splice(index, 1);
+    this.list.splice(index - 1, 1);
     this.#updateTasksIndex();
+  }
+
+  edit(index, value) {
+    this.list[index - 1].updateValue(value);
   }
 
   moveTaskToPosition(taskIndex, newIndex) {
@@ -27,13 +59,12 @@ export default class {
     rule.appendChild(document.createElement('hr'));
 
     this.list.forEach((task) => items.push(task.element, rule.cloneNode(true)));
-
     this.container.replaceChildren(...items);
   }
 
   #updateTasksIndex() {
     this.list.forEach((task, index) => {
-      task.index = index;
+      task.index = index + 1;
       task.updateIndex();
     });
   }

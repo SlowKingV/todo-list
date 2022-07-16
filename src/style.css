@@ -22,8 +22,18 @@ hr {
   margin: 0;
 }
 
-input[type="text"]:focus-visible {
+input[type="text"] {
+  margin: 0;
+  transition: box-shadow 0.2s ease-out;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 -5px 0 #7c83ec inset;
   outline: none;
+}
+
+input[type="checkbox"] {
+  width: 1.3em;
 }
 
 .icon {
@@ -72,6 +82,10 @@ input[type="text"]:focus-visible {
   cursor: pointer;
 }
 
+.item .delete:hover .icon {
+  color: #eb6060;
+}
+
 #add-btn .icon:hover {
   color: #7c83ec;
 }
@@ -82,28 +96,34 @@ input[type="text"]:focus-visible {
   padding: 0;
 }
 
-.item .task-check {
-  border: 2px solid #cecece;
-}
-
 .item .description {
   border: none;
   flex: 1;
   font-size: 1em;
-  margin-left: 1em;
+  padding-left: 1em;
 }
 
 .item .task-check:checked + .description {
   color: #afafaf;
   text-decoration: line-through;
+  font-style: italic;
 }
 
-.item .icon-btn {
-  cursor: grab;
+.item .delete {
+  display: none;
+  cursor: pointer;
 }
 
-.item .icon-btn:active {
-  cursor: grabbing;
+.item:focus-within .delete {
+  display: block;
+}
+
+.item .move {
+  cursor: move;
+}
+
+.item:focus-within .move {
+  display: none;
 }
 
 .spacer {

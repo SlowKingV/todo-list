@@ -7,22 +7,51 @@ import './style.css';
 // Modules
 import TaskList from './modules/taskList.js';
 
-// On page load populate task list
-window.onload = () => {
-  const listContainer = document.getElementById('list');// <ul> element to put the <li>s
-  const tasklist = new TaskList(listContainer);
+const addTaskForm = document.getElementById('add-form');
+const tasklist = new TaskList(document.getElementById('list'));
+const textInput = document.getElementById('text-input');
+const updateLocalStorage = () => {
+  localStorage.datalist = JSON.stringify(tasklist.exportListValues());
+};
 
-  // Example task operations
-  tasklist.add('Task 0');
-  tasklist.add('Task 1');
-  tasklist.add('Task 2');
-  tasklist.add('Task 3');
-  tasklist.remove(2);
-  tasklist.add('Task 5');
-  // Moves task on the index 2 ('Task 3') to index 1 (before 'Task 1')
-  tasklist.moveTaskToPosition(2, 1);
-  // Moves last task ('Task 5') to the beginning (before 'Task 0')
-  tasklist.moveTaskToPosition(tasklist.list.length - 1, 0);
+const setDeleteHandler = (task) => {
+  task.element.DELETE_BUTTON.addEventListener('click', () => {
+    tasklist.remove(task.index);
+    tasklist.updateListHTML();
+    updateLocalStorage();
+  });
+};
+
+const setTextInputHandler = (task) => {
+  task.element.TEXT_INPUT.addEventListener('change', () => {
+    tasklist.edit(task.index, task.element.TEXT_INPUT.value);
+    tasklist.updateListHTML();
+    updateLocalStorage();
+  });
+};
+
+addTaskForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const task = tasklist.add(textInput.value);
+
+  setDeleteHandler(task);
+  setTextInputHandler(task);
 
   tasklist.updateListHTML();
+  updateLocalStorage();
+  textInput.value = '';
+});
+
+// On page load populate task list
+window.onload = () => {
+  if (localStorage.datalist && localStorage.datalist.length > 0) {
+    tasklist.regenerateValues(JSON.parse(localStorage.datalist));
+  } else updateLocalStorage();
+
+  tasklist.updateListHTML();
+
+  tasklist.list.forEach((task) => {
+    setDeleteHandler(task);
+    setTextInputHandler(task);
+  });
 };
