@@ -20,7 +20,7 @@ const setDeleteHandler = (task) => {
     tasklist.updateListHTML();
     updateLocalStorage();
   });
-}
+};
 
 const setTextInputHandler = (task) => {
   task.element.TEXT_INPUT.addEventListener('change', () => {
@@ -28,7 +28,7 @@ const setTextInputHandler = (task) => {
     tasklist.updateListHTML();
     updateLocalStorage();
   });
-}
+};
 
 addTaskForm.addEventListener('submit', (event) => {
   event.preventDefault();
