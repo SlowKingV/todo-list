@@ -33,7 +33,7 @@ export default class {
   }
 
   add(value) {
-    const task = new Task(value, this.list.length);
+    const task = new Task(value, this.list.length + 1);
     this.list.push(task);
     return task;
   }
@@ -64,7 +64,7 @@ export default class {
 
   #updateTasksIndex() {
     this.list.forEach((task, index) => {
-      task.index = index;
+      task.index = index + 1;
       task.updateIndex();
     });
   }
