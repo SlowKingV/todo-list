@@ -20,7 +20,7 @@ export default class {
   }
 
   exportListValues() {
-    const datalist = []
+    const datalist = [];
     this.list.forEach((task) => {
       datalist.push({
         value: task.value,

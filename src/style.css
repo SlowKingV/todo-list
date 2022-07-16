@@ -82,6 +82,10 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.item .delete:hover .icon {
+  color: #eb6060;
+}
+
 #add-btn .icon:hover {
   color: #7c83ec;
 }
@@ -105,25 +109,21 @@ input[type="checkbox"] {
   font-style: italic;
 }
 
-.item:focus-within .delete {
-  display: block;
-}
-
-.item:focus-within .move {
-  display: none;
-}
-
 .item .delete {
   display: none;
   cursor: pointer;
 }
 
-.item .delete:hover .icon {
-  color: #eb6060;
+.item:focus-within .delete {
+  display: block;
 }
 
 .item .move {
   cursor: move;
+}
+
+.item:focus-within .move {
+  display: none;
 }
 
 .spacer {

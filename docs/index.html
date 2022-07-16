@@ -11,16 +11,17 @@
   <div class="list-box">
     <div class="heading-box item"><span>Today's To Do</span></div>
     <hr>
-    <form class="add-box item">
+    <form id="add-form" class="add-box item">
       <input id="text-input" type="text" placeholder="Add to your list..." required>
       <button id="add-btn" class="icon-btn" type="submit"><i class="icon fa-solid fa-circle-plus fa-fw"></i></button>
     </form>
     <hr>
     <ul id="list">
-      <li class="item">
+      <li class="item" data-index="0">
         <input class="task-check" type="checkbox">
-        <input class="description" type="text" value="Task placeholder, the script might not be working as intended">
-        <button class="icon-btn" type="button"><i class="icon fa-solid fa-ellipsis-vertical fa-fw"></i></button>
+        <input class="description" type="text" value="Test Task">
+        <button class="icon-btn delete" type="button"><i class="icon fa-solid fa-trash-can fa-fw"></i></button>
+        <button class="icon-btn move" type="button"><i class="icon fa-solid fa-ellipsis-vertical fa-fw"></i></button>
       </li>
       <li><hr></li>
     </ul>
