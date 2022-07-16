@@ -39,7 +39,7 @@ export default class {
   }
 
   remove(index) {
-    this.list.splice(index, 1);
+    this.list.splice(index - 1, 1);
     this.#updateTasksIndex();
   }
 
