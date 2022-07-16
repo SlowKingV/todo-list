@@ -44,7 +44,7 @@ export default class {
   }
 
   edit(index, value) {
-    this.list[index].updateValue(value);
+    this.list[index - 1].updateValue(value);
   }
 
   moveTaskToPosition(taskIndex, newIndex) {
