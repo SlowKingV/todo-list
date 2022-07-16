@@ -39,6 +39,7 @@ export default class {
     // Set attributes for checkbox
     element.children[0].setAttribute('class', 'task-check');
     element.children[0].setAttribute('type', 'checkbox');
+    if (this.completed) element.children[0].checked = true;
 
     // Set attributes for text input
     element.children[1].setAttribute('class', 'description');

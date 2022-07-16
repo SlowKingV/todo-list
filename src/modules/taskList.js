@@ -47,6 +47,15 @@ export default class {
     this.list[index - 1].updateValue(value);
   }
 
+  setStatus(index, bool) {
+    this.list[index - 1].completed = bool;
+  }
+
+  clearAllCompleted() {
+    this.list = this.list.filter((task) => !task.completed);
+    this.#updateTasksIndex();
+  }
+
   moveTaskToPosition(taskIndex, newIndex) {
     const task = this.list.splice(taskIndex, 1)[0];
     this.list.splice(newIndex, 0, task);
