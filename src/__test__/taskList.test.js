@@ -45,7 +45,16 @@ describe('add and remove', () => {
     // Assert
     expect(storage.length).toBe(0);
   });
+
+  test('edit item value', () => {
+    tasklistAdd(tasklist, 'value');
+    tasklist.edit(1, 'Edited Value');
+
+    expect(tasklist.list[0].element.TEXT_INPUT.value).toBe('Edited Value');
+  })
+
   test('clear all complete button', () =>{
+    tasklist.list = [];
     tasklistAdd(tasklist, 'hello');
     tasklistAdd(tasklist, 'world');
     tasklistAdd(tasklist, 'task');
