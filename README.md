@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Testing To Do list: part 1
+# Testing To Do list: part 2
 
-> In this project you will write unit tests for the To Do list application. The testing project has been divided into two parts. In part 1 you will test functions responsible for adding and deleting list items. In part 2 you will test the status and content updates as well as the order re-position of items in the list.
+> In this part of the testing project, you will test functions responsible for the status and content updates. You will also test the order re-position of items in the list upon drag/drop actions.
 
 ## Built With
 
