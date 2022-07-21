@@ -3,17 +3,16 @@
  */
 import TaskList from '../modules/taskList.js';
 import { tasklistAdd, clearAll} from '../modules/DOMFunctions';
-import task from '../modules/task.js';
 
+document.body.innerHTML =
+  '<div>' +
+  '  <ul id="list"></li>' +
+  '</div>';
+const list = document.getElementById('list');
+const tasklist = new TaskList(list);
+delete localStorage.datalist;
 describe('add and remove', () => {
   // Arrange
-  document.body.innerHTML =
-    '<div>' +
-    '  <ul id="list"></li>' +
-    '</div>';
-  const list = document.getElementById('list');
-  const tasklist = new TaskList(list);
-  delete localStorage.datalist;
 
   test('add to items', () => {
     // Act
@@ -46,7 +45,8 @@ describe('add and remove', () => {
     // Assert
     expect(storage.length).toBe(0);
   });
-
+});
+describe ('edit and status', () => {
   test('edit item value', () => {
     // Arrange
     tasklistAdd(tasklist, 'value');
