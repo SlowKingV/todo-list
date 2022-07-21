@@ -3,6 +3,7 @@
  */
 import TaskList from '../modules/taskList.js';
 import { tasklistAdd, clearAll} from '../modules/DOMFunctions';
+import task from '../modules/task.js';
 
 describe('add and remove', () => {
   // Arrange
@@ -47,23 +48,56 @@ describe('add and remove', () => {
   });
 
   test('edit item value', () => {
+    // Arrange
     tasklistAdd(tasklist, 'value');
-    tasklist.edit(1, 'Edited Value');
+    const textInput = tasklist.list[0].element.TEXT_INPUT;
+    textInput.value = 'Edited Value';
 
-    expect(tasklist.list[0].element.TEXT_INPUT.value).toBe('Edited Value');
+    // Act
+    textInput.dispatchEvent( new Event('change'));
+
+    // Assert
+    expect(textInput.value).toBe('Edited Value');
+  })
+
+  test('update local storage on edit', () => {
+    // Arrange
+    const storage = JSON.parse(localStorage.datalist);
+
+    // Assert
+    expect(storage[0].value).toBe('Edited Value')
+  })
+
+  test('change checkbox status', () => {
+    // Act
+    tasklist.list[0].element.CHECKBOX.click();
+
+    // Assert
+    expect(tasklist.list[0].element.CHECKBOX.checked).toBe(true);
+  })
+
+  test('update local storage on check', () => {
+    // Arrange
+    const storage = JSON.parse(localStorage.datalist);
+
+    // Assert
+    expect(storage[0].completed).toBe(true);
   })
 
   test('clear all complete button', () =>{
+    // Arrange
     tasklist.list = [];
     tasklistAdd(tasklist, 'hello');
     tasklistAdd(tasklist, 'world');
     tasklistAdd(tasklist, 'task');
-
     tasklist.setStatus(1, true);
     tasklist.setStatus(3, true);
+
+    // Act
     clearAll(tasklist);
     tasklist.updateListHTML();
 
+    // Assert
     expect(list.querySelectorAll('.item').length).toBe(1);
   });
 });
