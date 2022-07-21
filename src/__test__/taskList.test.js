@@ -1,20 +1,31 @@
 /**
  * @jest-environment jsdom
  */
-import task from '../modules/task.js';
 import TaskList from '../modules/taskList.js';
+import { tasklistAdd } from '../modules/DOMFunctions';
 
 describe('add and remove', () => {
-    test('add of items', () => {
-        document.body.innerHTML =
-        '<div>' +
-        '  <ul id="list"></li>' +
-        '</div>'; 
-        const list = document.getElementById('list');
-        const tasklist = new TaskList(list);
-        tasklist.add('hello');
-        tasklist.updateListHTML();
-        console.log(Array.from(list.children));
-        expect(list.children.length).toBe(1);
-    })
+  // Arrange
+  document.body.innerHTML =
+    '<div>' +
+    '  <ul id="list"></li>' +
+    '</div>';
+  const list = document.getElementById('list');
+  const tasklist = new TaskList(list);
+
+  test('add to items', () => {
+    // Act
+    tasklistAdd(tasklist, 'hello');
+
+    //Assert
+    expect(list.querySelectorAll('.item').length).toBe(1);
+  })
+
+  test('remove from items', () => {
+    // Act
+    tasklist.list[0].element.DELETE_BUTTON.click();
+
+    // Assert
+    expect(list.children.length).toBe(0);
+  })
 })
