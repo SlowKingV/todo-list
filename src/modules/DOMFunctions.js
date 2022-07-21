@@ -34,14 +34,14 @@ export const tasklistAdd = (tasklist, value) => {
 
   tasklist.updateListHTML();
   updateLocalStorage(tasklist);
-}
+};
 
 // Set Handler for 'Clear All Completed' button
 export const clearAll = (tasklist) => {
   tasklist.clearAllCompleted();
   tasklist.updateListHTML();
   updateLocalStorage(tasklist);
-}
+};
 
 export const loadData = (tasklist) => {
   if (localStorage.datalist && localStorage.datalist.length > 0) {
@@ -53,4 +53,4 @@ export const loadData = (tasklist) => {
   tasklist.list.forEach((task) => {
     setTaskHandlers(task, tasklist);
   });
-}
+};
