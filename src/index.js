@@ -6,7 +6,7 @@ import './style.css';
 
 // Modules
 import TaskList from './modules/taskList.js';
-import { tasklistAdd, clearAll, loadData } from './modules/DOMFunctions';
+import { tasklistAdd, clearAll, loadData } from './modules/DOMFunctions.js';
 
 // Declare constants for DOM Elements
 const addTaskForm = document.getElementById('add-form');
