@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import TaskList from '../modules/taskList.js';
-import { tasklistAdd } from '../modules/DOMFunctions';
+import { tasklistAdd, clearAll} from '../modules/DOMFunctions';
 
 describe('add and remove', () => {
   // Arrange
@@ -44,5 +44,17 @@ describe('add and remove', () => {
 
     // Assert
     expect(storage.length).toBe(0);
-  })
-})
+  });
+  test('clear all complete button', () =>{
+    tasklistAdd(tasklist, 'hello');
+    tasklistAdd(tasklist, 'world');
+    tasklistAdd(tasklist, 'task');
+
+    tasklist.setStatus(1, true);
+    tasklist.setStatus(3, true);
+    clearAll(tasklist);
+    tasklist.updateListHTML();
+
+    expect(list.querySelectorAll('.item').length).toBe(1);
+  });
+});
